@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.AddCompanyMapper">
+
+    <resultMap id="getListCompany1" type="com.example.demo.pojo.ApplicantList">
+        <result property="count" column="COUNT(`applicant_person`)"/>
+    </resultMap>
+    <select id="getListCompany" resultMap="getListCompany1">
+        SELECT `applicant_person` ,COUNT(`applicant_person`) FROM `bishanpatent`
+        GROUP BY `applicant_person`
+        ORDER BY COUNT(`applicant_person`) DESC
+    </select>
+
+</mapper>
